@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
 function useInput (initialValue, validator) {
+  //useState에서 보내준 set 함수는 값을 변경하고 다시 렌더링해줌 
     const [value, setValue] = useState(initialValue);
     const onChange = event => {
       const {

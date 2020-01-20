@@ -1,14 +1,23 @@
-import React from 'react';
-import './App.css';
-import useInput from "./hooks/useInput"
+
+import React, { useState }from 'react';
+//import './App.css';
+
+const useChange = (initialValue) => {
+  const [lettering, changeLettering] = useState(initialValue);
+  const addAlert = (value) => {
+    console.log("work!");
+    alert("nananana");
+    changeLettering(value);
+  }
+  return { lettering, addAlert };
+}
 
 const App = () => {
-  const validator = value => !value.includes("@");
-  const name = useInput("Mr. ", validator);
+  const { lettering, addAlert } = useChange("Before push the button..");
   return (
     <div className="App">
       <h1>Hello</h1>
-      <input placeholder="Name" {...name.props} />
+      <button onClick={ () => addAlert("Pushed") }>{ lettering }</button> 
     </div>
   );
 };
